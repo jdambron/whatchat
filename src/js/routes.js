@@ -9,6 +9,7 @@ import SettingsPage from '../pages/settings.vue';
 import DynamicRoutePage from '../pages/dynamic-route.vue';
 import RequestAndLoad from '../pages/request-and-load.vue';
 import NotFoundPage from '../pages/404.vue';
+import SignInPage from '../pages/auth/signin.vue'
 
 var routes = [
   {
@@ -18,6 +19,10 @@ var routes = [
   {
     path: '/about/',
     component: AboutPage,
+  },
+  {
+    path: '/signin/',
+    component: SignInPage,
   },
   {
     path: '/form/',
