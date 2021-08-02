@@ -1,100 +1,18 @@
+
 # WhatChat
 
-## Framework7 CLI Options
-
-Framework7 app created with following options:
-
-```
-{
-  "cwd": "C:\\Users\\jdambron\\git\\whatchat",
-  "type": [
-    "cordova"
-  ],
-  "name": "WhatChat",
-  "framework": "vue",
-  "template": "tabs",
-  "bundler": "vite",
-  "cssPreProcessor": false,
-  "theming": {
-    "customColor": false,
-    "color": "#007aff",
-    "darkTheme": false,
-    "iconFonts": true,
-    "fillBars": false
-  },
-  "customBuild": false,
-  "pkg": "io.framework7.whatchat",
-  "cordova": {
-    "folder": "cordova",
-    "platforms": [
-      "ios",
-      "android"
-    ],
-    "plugins": [
-      "cordova-plugin-statusbar",
-      "cordova-plugin-keyboard",
-      "cordova-plugin-splashscreen"
-    ]
-  }
-}
-```
-
-## Install Dependencies
-
-First of all we need to install dependencies, run in terminal
-```
-npm install
-```
-
-## NPM Scripts
-
-* 🔥 `start` - run development server
-* 🔧 `dev` - run development server
-* 🔧 `build` - build web app for production
-* 📱 `build-cordova` - build cordova app
-* 📱 `build-cordova-ios` - build cordova iOS app
-* 📱 `cordova-ios` - run dev build cordova iOS app
-* 📱 `build-cordova-android` - build cordova Android app
-* 📱 `cordova-android` - run dev build cordova Android app
-
-## Vite
-
-There is a [Vite](http://vitejs.dev) bundler setup. It compiles and bundles all "front-end" resources. You should work only with files located in `/src` folder. Vite config located in `vite.config.js`.
-## Cordova
-
-Cordova project located in `cordova` folder. You shouldn't modify content of `cordova/www` folder. Its content will be correctly generated when you call `npm run cordova-build-prod`.
+A simple mobile chat tool using [Framework7](framework7.io), [Vue.js](https://vuejs.org/) and [Firebase](https://firebase.google.com/).
 
 
+## Appendix
 
+My only goal with this project is to learn the tech stack, nothing more.
 
+⚠️ It is neither intended to be used in production nor being a reference.
 
-## Assets
+💡 It is a work in progress and lots of things might be unfinished / broken.  
+## License
 
-Assets (icons, splash screens) source images located in `assets-src` folder. To generate your own icons and splash screen images, you will need to replace all assets in this directory with your own images (pay attention to image size and format), and run the following command in the project directory:
+[MIT](https://choosealicense.com/licenses/mit/)
 
-```
-framework7 assets
-```
-
-Or launch UI where you will be able to change icons and splash screens:
-
-```
-framework7 assets --ui
-```
-
-
-
-## Documentation & Resources
-
-* [Framework7 Core Documentation](https://framework7.io/docs/)
-* [Framework7 Vue Documentation](https://framework7.io/vue/)
-
-
-* [Framework7 Icons Reference](https://framework7.io/icons/)
-* [Community Forum](https://forum.framework7.io)
-
-## Support Framework7
-
-Love Framework7? Support project by donating or pledging on:
-- Patreon: https://patreon.com/framework7
-- OpenCollective: https://opencollective.com/framework7
+  
