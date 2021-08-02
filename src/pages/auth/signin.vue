@@ -26,7 +26,7 @@
     </f7-block>
     <div style="text-align:center;">
       <f7-link>Resend confirmation email</f7-link><br>
-      <f7-link>Don't have an account? Sign up</f7-link><br>
+      <f7-link href="/signup/">Don't have an account? Sign up</f7-link><br>
       <f7-link>Forgot password</f7-link>
     </div>
   </f7-page>
