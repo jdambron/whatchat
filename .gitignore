@@ -39,7 +39,8 @@ cordova/platforms/
 cordova/plugins/
 cordova/www/
 
-
+# Config
+src/js/config.js
 
 # Production build
 www/

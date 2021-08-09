@@ -93,6 +93,7 @@
   </f7-app>
 </template>
 <script>
+  import firebase from 'firebase';
   import { ref, onMounted } from 'vue';
   import { f7, f7ready } from 'framework7-vue';
   import { getDevice }  from 'framework7/lite-bundle';
@@ -100,6 +101,35 @@
 
   import routes from '../js/routes.js';
   import store from '../js/store';
+  import config from '../js/config.js';
+
+  // Your web app's Firebase configuration
+
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+  var firebaseConfig = {
+
+    apiKey: config.FIREBASE_API_KEY,
+
+    authDomain: config.FIREBASE_AUTH_DOMAIN,
+
+    projectId: config.FIREBASE_PROJECT_ID,
+
+    storageBucket: config.FIREBASE_STORAGE_BUCKET,
+
+    messagingSenderId: config.FIREBASE_MESSAGING_SENDER_ID,
+
+    appId: config.FIREBASE_APP_ID,
+
+    measurementId: config.FIREBASE_MEASUREMENT_ID
+
+  };
+
+  // Initialize Firebase
+
+  firebase.initializeApp(firebaseConfig);
+
+  firebase.analytics();
 
   export default {
     setup() {

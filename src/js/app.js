@@ -16,12 +16,33 @@ import '../css/app.css';
 
 // Import App Component
 import App from '../components/app.vue';
+import { createStore } from 'vuex'
+import AuthModule from '../pages/store/AuthModule'
+
+// Create a new store instance.
+const store = createStore({
+  modules:{
+    auth:AuthModule
+  },
+  state () {
+    return {
+      count: 0,
+      message: 'message'
+    }
+  },
+  mutations: {
+    increment (state) {
+    }
+  }
+})
 
 // Init Framework7-Vue Plugin
 Framework7.use(Framework7Vue);
 
 // Init App
 const app = createApp(App);
+// Install the store instance as a plugin
+app.use(store);
 
 // Register Framework7 Vue components
 registerComponents(app);

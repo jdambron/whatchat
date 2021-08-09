@@ -34,7 +34,7 @@
       </f7-list-input>
     </f7-list>
     <f7-block>
-      <f7-button outline>sign up</f7-button>
+      <f7-button outline @click="signUp">sign up</f7-button>
     </f7-block>
   </f7-page>
 </template>
@@ -45,6 +45,16 @@ export default {
       name:null,
       email:null,
       password:null
+    }
+  },
+  methods:{
+    signUp(){
+      const self = this
+      var payload = {}
+      payload.name = this.name
+      payload.email = this.email
+      payload.password = this.password
+      this.$store.dispatch('signUp',payload)
     }
   }
 }
