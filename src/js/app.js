@@ -24,14 +24,15 @@ const store = createStore({
   modules:{
     auth:AuthModule
   },
-  state () {
-    return {
-      count: 0,
-      message: 'message'
-    }
+  state: {
+    alert_message:null,
+  },
+  getters: {
+    alert_message:state=>state.alert_message
   },
   mutations: {
-    increment (state) {
+    setAlertMessage(state,payload){
+      state.alert_message = payload
     }
   }
 })

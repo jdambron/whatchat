@@ -19,10 +19,12 @@ const AuthModule = {
                             console.log('updated profile')
                         }).catch(err=>{
                             console.log(err.message)
+                            commit('setAlertMessage', err.message);
                         })
 
                 }).catch(err=>{
                     console.log(err.message)
+                    commit('setAlertMessage', err.message);
                 })
         }
     }
