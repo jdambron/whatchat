@@ -40,6 +40,7 @@
 </template>
 <script>
 import { mixin } from '../../js/mixin';
+import { f7 } from 'framework7-vue';
 export default {
   mixins:[mixin],
   data(){
@@ -58,6 +59,21 @@ export default {
       payload.password = this.password
       this.$store.dispatch('signUp',payload)
     },
+  },
+  computed:{
+    signed_up(){
+      return this.$store.getters.signed_up
+    }
+  },
+  watch:{
+    signed_up(value){
+      if(value==true){
+        f7.views.main.router.navigate('/signin/')
+      }
+    }
+  },
+  ceated(){
+    this.$store.commit('setSignedUp',false)
   }
 }
 </script>
