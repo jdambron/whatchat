@@ -9,6 +9,7 @@
           <f7-block>Left panel content goes here</f7-block>
           <f7-list>
             <f7-list-item link="/signin/" view=".view-main" panel-close title="Sign in"></f7-list-item>
+            <f7-list-item @click="signOut" view=".view-main" panel-close title="Sign out"></f7-list-item>
           </f7-list>
         </f7-page>
       </f7-view>
@@ -191,6 +192,12 @@ export default {
   computed:{
     signed_in(){
       return this.$store.getters.signed_in
+    }
+  },
+  methods:{
+    signOut(){
+      this.$store.dispatch('signOut')
+      f7.panel.close()
     }
   }
 }

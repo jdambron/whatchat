@@ -18,6 +18,7 @@ import '../css/app.css';
 import App from '../components/app.vue';
 import { createStore } from 'vuex'
 import AuthModule from '../pages/store/AuthModule'
+import firebase from 'firebase'
 
 // Create a new store instance.
 const store = createStore({
@@ -39,6 +40,17 @@ const store = createStore({
 
 // Init Framework7-Vue Plugin
 Framework7.use(Framework7Vue);
+
+// Check if the user is already connected
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in
+    store.commit('setSignedIn', true)
+  } else {
+    // User is signed out
+    store.commit('setSignedIn', false)
+  }
+});
 
 // Init App
 const app = createApp(App);
