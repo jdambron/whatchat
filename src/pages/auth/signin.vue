@@ -22,7 +22,7 @@
       </f7-list-input>
     </f7-list>
     <f7-block>
-      <f7-button outline>Sign in</f7-button>
+      <f7-button outline @click="signIn">Sign in</f7-button>
     </f7-block>
     <div style="text-align:center;">
       <f7-link>Resend confirmation email</f7-link><br>
@@ -37,6 +37,14 @@ export default {
     return {
       email:null,
       password:null
+    }
+  },
+  methods:{
+    signIn(){
+      var payload = {}
+      payload.email = this.email
+      payload.password = this.password
+      this.$store.dispatch('signIn', payload)
     }
   }
 }
