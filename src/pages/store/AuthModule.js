@@ -22,6 +22,17 @@ const AuthModule = {
             firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
                 .then((userCredential) => {
                     // Signed in
+                    firebase.auth().onAuthStateChanged((user) => {
+                        if (user.emailVerified) {
+                            // User is signed in
+                            commit('setSignedIn', true)
+                            commit('setAlertMessage', user.displayName)
+                        } else {
+                            // User is signed out
+                            commit('setSignedIn', false)
+                            commit('setAlertMessage', 'Please verify your email')
+                        }
+                    })
                     commit('setSignedIn', true)
                 })
                 .catch((error) => {
@@ -35,7 +46,7 @@ const AuthModule = {
                         uid:data.user.uid,
                         name:payload.name,
                         email:payload.email,
-                        emailverified:false
+                        emailVerified:false
                     });
                     let newuser = data.user;
                     newuser.updateProfile({

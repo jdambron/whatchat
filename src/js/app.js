@@ -42,8 +42,9 @@ const store = createStore({
 Framework7.use(Framework7Vue);
 
 // Check if the user is already connected
+let app = null;
 firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
+  if (user && user.emailVerified) {
     // User is signed in
     store.commit('setSignedIn', true)
   } else {
@@ -52,13 +53,15 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
-// Init App
-const app = createApp(App);
-// Install the store instance as a plugin
-app.use(store);
+if(!app){
+  // Init App
+  const app = createApp(App);
+  // Install the store instance as a plugin
+  app.use(store);
 
-// Register Framework7 Vue components
-registerComponents(app);
+  // Register Framework7 Vue components
+  registerComponents(app);
 
-// Mount the app
-app.mount('#app');
+  // Mount the app
+  app.mount('#app');
+}
