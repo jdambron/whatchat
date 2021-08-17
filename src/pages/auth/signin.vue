@@ -25,13 +25,15 @@
       <f7-button outline @click="signIn">Sign in</f7-button>
     </f7-block>
     <div style="text-align:center;">
-      <f7-link @click="resendEmail">Resend confirmation email <span v-if="time_left>0">{{time_left}}</span></f7-link><br>
+      <f7-link v-if="show_resend_email" @click="resendEmail" :color="color(time_left)">Resend confirmation email</f7-link><br>
       <f7-link href="/signup/">Don't have an account? Sign up</f7-link><br>
-      <f7-link>Forgot password</f7-link>
+      <f7-link @click="forgotPassword">Forgot password</f7-link>
     </div>
   </f7-page>
 </template>
 <script>
+import firebase from 'firebase';
+
 export default {
   data(){
     return {
@@ -40,7 +42,36 @@ export default {
       time_left:-1
     }
   },
+  computed:{
+    show_resend_email(){
+      return this.$store.getters.show_resend_email
+    }
+  },
   methods:{
+    forgotPassword(){
+      const self = this;
+      if (this.email!=null) {
+        firebase.auth().sendPasswordResetEmail(this.email)
+          .then(() => {
+            // Password reset email sent!
+            self.$store.commit('setAlertMessage', 'A password reset has been sent')
+          })
+          .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            self.$store.commit('setAlertMessage', errorMessage)
+          });
+      } else {
+        self.$store.commit('setAlertMessage', 'Enter a valid email')
+      }
+    },
+    color(timeleft){
+      if (timeleft <= 0) {
+        return '#007aff'
+      } else {
+        return 'gray'
+      }
+    },
     resendEmail(){
       const self = this
       if (self.time_left<=0) {

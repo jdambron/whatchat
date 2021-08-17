@@ -3,11 +3,13 @@ import firebase from 'firebase';
 const AuthModule = {
     state:{
         signed_in:false,
-        signed_up: false
+        signed_up: false,
+        show_resend_email: false
     },
     getters:{
         signed_in:state=>state.signed_in,
-        signed_up:state=>state.signed_up
+        signed_up:state=>state.signed_up,
+        show_resend_email:state=>state.show_resend_email
     },
     mutations:{
         setSignedIn(state,payload){
@@ -15,6 +17,9 @@ const AuthModule = {
         },
         setSignedUp(state,payload){
             state.signed_up = payload
+        },
+        setShowResendEmail(state,payload){
+            state.show_resend_email = payload
         }
     },
     actions:{
@@ -27,10 +32,12 @@ const AuthModule = {
                             // User is signed in
                             commit('setSignedIn', true)
                             commit('setAlertMessage', user.displayName)
+                            commit('setShowResendEmail', false)
                         } else {
                             // User is signed out
                             commit('setSignedIn', false)
                             commit('setAlertMessage', 'Please verify your email')
+                            commit('setShowResendEmail', true)
                         }
                     })
                     commit('setSignedIn', true)
